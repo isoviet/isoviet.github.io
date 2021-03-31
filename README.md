@@ -1,2 +1,0 @@
-# sovlet.github.io
-DB
