@@ -53,7 +53,7 @@ var transmitter = setInterval(function() {
 	if(document.getElementById("flash-app").data.indexOf("/client_release") != -1) {
 		return;
 	}
-	if(!('openWindow' in window)) {
+	if(!('check' in window)) {
 		return;
 	}
 	let matches = document.cookie.match(/(?:^|; )authResult=([^;]*)/);
@@ -62,4 +62,5 @@ var transmitter = setInterval(function() {
 	}
 	window.localStorage.authResult = matches[1];
 	document.cookie = "authResult=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+	window.check();
 }, 1000);
