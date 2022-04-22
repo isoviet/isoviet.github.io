@@ -1,8 +1,66 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<script type="text/javascript">
-		window.close();
-	</script>
-</head>
-</html> 
+	<head>
+		<script type="text/javascript">
+			setTimeout(window.close, 3000);
+		</script>
+		<style type="text/css">
+			-webkit-@keyframes spin {
+				-webkit-from {
+					-webkit-transform: rotate(0deg);
+					-ms-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				-webkit-to {
+					-webkit-transform: rotate(360deg);
+					-ms-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+
+			@-webkit-keyframes spin {
+				from {
+					-webkit-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				to {
+					-webkit-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+
+			@keyframes spin {
+				from {
+					-webkit-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				to {
+					-webkit-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+			.loading {
+				position: absolute;
+  				top: 50%;
+				left: 50%;
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+			}
+			.spinner {
+				width: 75px;
+				height: 75px;
+				border-radius: 50%;
+				background-color: rgba(0, 0, 0, 0);
+				border: 4px solid #888;
+				border-top-color: #222;
+				-webkit-animation: 1s spin linear infinite;
+				animation: 1s spin linear infinite;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="loading">
+			<div class="spinner"></div>
+		</div>
+	</body>
+</html>
+
