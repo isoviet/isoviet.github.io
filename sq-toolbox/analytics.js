@@ -57,7 +57,7 @@ var transmitter = setInterval(function() {
 		return;
 	}
 	let matches = document.cookie.match(/(?:^|; )authResult=([^;]*)/);
-	if(!matches[1]) {
+	if(!matches) {
 		return;
 	}
 	window.localStorage.authResult = matches[1];
