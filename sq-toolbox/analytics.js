@@ -51,7 +51,7 @@ window.A = {
 
 var old_setTimeout = window.setTimeout;
 window.setTimeout = function(func, time, ...args) {
-	if('check' in window && func == window.check) { console.log("xddd");
+	if('check' in window && func == window.check) {
 		func = function() {
 			var matches = document.cookie.match(/(?:^|; )authResult=([^;]*)/);
 			if(matches) {
