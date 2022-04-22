@@ -51,9 +51,9 @@ window.A = {
 
 var transmitter = setInterval(function() {
 	if(document.getElementById("flash-app").data.indexOf("/client_release") != -1) {
-		clearInterval(transmitter);
+		return;
 	}
-	if(!openWindow) {
+	if(!('openWindow' in window)) {
 		return;
 	}
 	let matches = document.cookie.match(/(?:^|; )authResult=([^;]*)/);
