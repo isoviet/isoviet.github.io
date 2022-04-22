@@ -61,6 +61,6 @@ var transmitter = setInterval(function() {
 		return;
 	}
 	window.localStorage.authResult = matches[1];
-	document.cookie = "authResult=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+	document.cookie = "authResult=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
 	window.check();
 }, 1000);
