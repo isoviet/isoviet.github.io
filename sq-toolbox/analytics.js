@@ -49,18 +49,29 @@ window.A = {
 	}
 }
 
-var transmitter = setInterval(function() {
-	if(document.getElementById("flash-app").data.indexOf("/client_release") != -1) {
-		return;
+var old_setTimeout = window.setTimeout;
+window.setTimeout = function(func, time, ...args) {
+	if('check' in window && func == window.check) { console.log("xddd");
+		func = function() {
+			var matches = document.cookie.match(/(?:^|; )authResult=([^;]*)/);
+			if(matches) {
+				window.localStorage.authResult = matches[1];
+				document.cookie = "authResult=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+			}
+			var exists = false;
+			try {
+				exists = 'est' in window.w;
+			} catch(e) {}
+			if(!exists) {
+				window.w = {est: window.w, elapsed: time, closed: false};
+			} else {
+				window.w.elapsed = window.w.elapsed + time;
+			}
+			if((window.w.est == null || window.w.est.closed) && window.w.elapsed > 5000) {
+				return;
+			}
+			window.check();
+		}
 	}
-	if(!('check' in window)) {
-		return;
-	}
-	let matches = document.cookie.match(/(?:^|; )authResult=([^;]*)/);
-	if(!matches) {
-		return;
-	}
-	window.localStorage.authResult = matches[1];
-	document.cookie = "authResult=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
-	window.check();
-}, 1000);
+	old_setTimeout(func, time, ...args);
+}
